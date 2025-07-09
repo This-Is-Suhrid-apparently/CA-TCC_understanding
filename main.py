@@ -31,6 +31,21 @@ parser.add_argument('--data_path',                  default=r'data/',           
 parser.add_argument('--logs_save_dir',              default='experiments_logs', type=str,   help='saving directory')
 parser.add_argument('--device',                     default='cuda:0',           type=str,   help='cpu or cuda')
 parser.add_argument('--home_path',                  default=home_dir,           type=str,   help='Project home directory')
+
+USE_MANUAL_ARGS = True
+if USE_MANUAL_ARGS:
+    sys.argv = [
+        'main.py',
+        '--experiment_description', 'exp1',
+        '--run_description', 'run_1',
+        '--seed', '123',
+        '--training_mode', 'random_init', #random_init', 'self_supervised'
+        '--selected_dataset', 'HAR'
+    ]
+
+args = parser.parse_args()
+
+
 args = parser.parse_args()
 
 device = torch.device(args.device)
